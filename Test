@@ -1,0 +1,105 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local SPDHub = OrionLib:MakeWindow({Name = "SpdHub", IntroText = "SpD Hub", print("Welcome to SpD Hub! join discord"), HidePremium = false, SaveConfig = true, ConfigFolder = "SPDAutoSave"})
+
+--functions--
+
+function massive()
+local replicated = game:GetService('ReplicatedStorage')
+
+coroutine.wrap(function()
+  for i = 1,2000 do -- do howerver much you want
+    task.spawn(function()
+        replicated.RSPackage.Events.StatFunction:InvokeServer('Stat', 'Chakra')
+    end)
+  end
+end)()
+ 
+-- Customize how bad you want it to lag here
+for i = 1,500 do
+    for i = 1,500 do
+        for i = 1,10000 do
+        end
+    end
+  end
+end
+
+function kick()
+  wait(5.5)
+  game.Players.LocalPlayer:Kick("Fixed it! (rejoin game)")
+end
+
+function dungeon()
+  local replicated = game:GetService("ReplicatedStorage")
+local multiplier = 15
+
+while true do task.wait()
+    for i = 1, multiplier do
+        task.spawn(function()
+          replicated.RSPackaga.Events.GeneralFunction:InvokeServer("LotteryRandomDraw")
+          replicated.RSPackage.Events.GeneralEvent:FireServer("SpinFinished")
+        end)
+    end
+  end
+end
+
+function forca() 
+
+while true do game:GetService("ReplicatedStorage").RSPackage.Events.StatFunction:InvokeServer("Stat","Strength")
+game:GetService("ReplicatedStorage").RSPackage.Events.GeneralEvent:FireServer("SpecialAction",{["Request"] = "Click"}) 
+  end
+end
+
+function sword() 
+  game:GetService("ReplicatedStorage").RSPackage.Events.StatFunction:InvokeServer("Stat","Sword") game:GetService("ReplicatedStorage").RSPackage.Events.GeneralEvent:FireServer("SpecialAction",{["Request"] = "Click"})
+end     
+
+  
+-- Tabs --
+
+  local Main = SPDHub:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+}) 
+
+  -- Buttons/ Toggles 
+
+Main:AddButton({
+	Name = "Inf Yen (dungeon)",
+	Callback = function()
+      		dungeon()
+           print("discord.gg/anticookie")
+  	end
+})
+
+Main:AddButton({
+  Name = "OP Chakra",
+  Callback = function()
+      wait(0.5) -- Otimização, não excluir
+      massive() 
+        
+end
+}) 
+
+Main:AddButton({
+	Name = "Stop Inf Yen",
+	Callback = function()
+          OrionLib:MakeNotification({
+    Name = "Fixing it...",
+    Content = "Wait 5 sec!",
+    Image = "rbxassetid://4483345998",
+    Time = 10
+})
+      		kick()
+  	end
+})
+
+Main:AddButton({
+    Name = "Destroy GUI.",
+    Callback = function()
+      OrionLib:Destroy()
+    end
+})
+
+OrionLib:Init()
